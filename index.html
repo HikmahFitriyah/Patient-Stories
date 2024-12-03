@@ -1,4 +1,58 @@
-<div style="padding:56.25% 0 0 0;position:relative;">
-  <iframe src="https://player.vimeo.com/video/777212143?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Fatirah NCCS FAP Video Final">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password-Protected Vimeo Video</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        iframe {
+            border: none;
+            width: 640px;
+            height: 360px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <!-- Embedded Vimeo Video -->
+    <iframe 
+        src="https://player.vimeo.com/video/777212143" 
+        allow="autoplay; fullscreen; picture-in-picture" 
+        allowfullscreen>
+    </iframe>
     
-  </iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+    <!-- Button at the Bottom -->
+    <button id="action-button" onclick="redirectToPage()">Proceed</button>
+
+    <script>
+        // JavaScript for Button Action
+        function redirectToPage() {
+            window.location.href = "https://www.youtube.com/watch?v=68gU9V2xWRg&ab_channel=CodeCommerce"; // Replace with your desired URL
+        }
+    </script>
+</body>
+</html>
+
