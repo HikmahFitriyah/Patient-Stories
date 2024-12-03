@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Password-Protected Vimeo Video</title>
+    <title>Delayed Button</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -30,6 +30,9 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
+            display: none; /* Hidden initially */
+            position: absolute;
+            bottom: 20px;
         }
         button:hover {
             background-color: #45a049;
@@ -46,23 +49,29 @@
     </iframe>
     
     <!-- Button to Play Video -->
-    <button id="play-button">Play Video</button>
+    <button id="play-button" onclick="playVideo()">Play Video</button>
+    
+    <!-- Delayed Button -->
+    <button id="delayed-button">Proceed</button>
 
     <script src="https://player.vimeo.com/api/player.js"></script>
     <script>
-        // Select the iframe and initialize Vimeo Player
+        // Vimeo Player Initialization
         const iframe = document.getElementById('vimeo-player');
         const player = new Vimeo.Player(iframe);
 
-        // Add event listener to the button
-        document.getElementById('play-button').addEventListener('click', () => {
-            player.play().then(() => {
-                console.log('Video is playing');
-            }).catch((error) => {
+        // Play Video Button Action
+        function playVideo() {
+            player.play().catch((error) => {
                 console.error('Error playing the video:', error);
             });
-        });
+        }
+
+        // Show Delayed Button After 1 minute 20 seconds (80,000 milliseconds)
+        const delayedButton = document.getElementById('delayed-button');
+        setTimeout(() => {
+            delayedButton.style.display = 'block';
+        }, 80000); // 1 minute 20 seconds (80,000 milliseconds)
     </script>
 </body>
 </html>
-
