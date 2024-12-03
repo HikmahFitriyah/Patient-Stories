@@ -35,11 +35,8 @@
         .video-wrapper {
             position: relative;
             width: 100%;
-            max-width: 100%;  /* Ensure it scales with the screen width */
-            height: 0;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio (9 / 16 * 100 = 56.25) */
             margin-bottom: 20px;
-            overflow: hidden;  /* Hide overflow in case the video goes outside of the container */
+            overflow: hidden;
         }
 
         .video-wrapper iframe {
@@ -79,7 +76,7 @@
 
     <!-- Text at the top of the page -->
     <div class="top-text">
-        Please key in the password from the previous survey, then press 'Play Video'. If the video does not play, please refresh the page.
+        Please key in the password, then press 'Play Video'. If the video does not play, please refresh the page.
     </div>
 
     <!-- Responsive Vimeo Video Wrapper -->
@@ -95,7 +92,7 @@
     <!-- Button Container -->
     <div class="button-container">
         <button class="button" id="play-button" onclick="playVideo()">Play Video</button>
-        <button class="button" id="delayed-button" onclick="window.location.href='https://www.youtube.com/';">Proceed</button>
+        <button class="button" id="delayed-button" onclick="window.open('Password.html', '_blank');">Proceed</button>
     </div>
 
     <script src="https://player.vimeo.com/api/player.js"></script>
@@ -103,6 +100,27 @@
         // Vimeo Player Initialization
         const iframe = document.getElementById('vimeo-player');
         const player = new Vimeo.Player(iframe);
+
+        // Adjust the video size based on orientation
+        function adjustVideoSize() {
+            const videoWrapper = document.querySelector('.video-wrapper');
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+
+            if (screenWidth < screenHeight) {
+                // Portrait: Fit to the width
+                videoWrapper.style.height = `${(screenWidth * 9) / 16}px`; // Maintain 16:9 aspect ratio
+                videoWrapper.style.width = '100%';
+            } else {
+                // Landscape: Fit to the height
+                videoWrapper.style.height = '100%';
+                videoWrapper.style.width = `${(screenHeight * 16) / 9}px`; // Maintain 16:9 aspect ratio
+            }
+        }
+
+        // Call the function on page load and on window resize
+        window.onload = adjustVideoSize;
+        window.onresize = adjustVideoSize;
 
         // Play Video Button Action
         function playVideo() {
