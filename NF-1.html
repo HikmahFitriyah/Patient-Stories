@@ -13,22 +13,31 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            padding-top: 20px;  /* Add space from the top */
+            padding-top: 20px;
             background-color: #101111;
             color: white;
             text-align: center;
         }
 
+        /* Header */
+        header {
+            font-size: 3vw; /* Responsive header font size */
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
         /* Text at the top */
         .top-text {
-            font-size: 24px;
-            margin-bottom: 20px;  /* Adds some space between text and video */
-            padding: 20px;  /* Add padding to all sides */
-            padding-top: 30px;  /* Add more space at the top */
-            padding-left: 40px; /* Add space to the left */
-            padding-right: 40px; /* Add space to the right */
-            background-color: rgba(0, 0, 0, 0.5); /* Optional: adds a translucent background for better readability */
-            border-radius: 5px; /* Optional: gives the background rounded corners */
+            font-size: 2.5vw; /* Font size adjusts relative to viewport width */
+            margin-bottom: 20px;
+            padding: 20px;
+            padding-top: 10px;
+            padding-left: 40px;
+            padding-right: 40px;
+            background-color: #101111; /* Match page background */
+            border-radius: 5px; /* Optional: Gives rounded corners */
+            line-height: 1.5; /* Improves readability */
+            max-width: 80%; /* Limits the width of the text box */
         }
 
         /* Wrapper for Responsive Video */
@@ -45,6 +54,8 @@
             left: 0;
             width: 100%;
             height: 100%;
+            margin: 0;
+            border: none;
         }
 
         .button-container {
@@ -54,7 +65,7 @@
 
         .button {
             padding: 10px 20px;
-            font-size: 16px;
+            font-size: 2vw; /* Font size adjusts relative to viewport width */
             background-color: #4CAF50;
             color: white;
             border: none;
@@ -70,9 +81,27 @@
         #delayed-button {
             display: none;
         }
+
+        /* Media Query for smaller screens */
+        @media (max-width: 600px) {
+            header {
+                font-size: 5vw; /* Larger font size for smaller screens */
+            }
+
+            .top-text {
+                font-size: 4vw; /* Larger font size for smaller screens */
+            }
+
+            .button {
+                font-size: 3.5vw; /* Adjust button font size */
+            }
+        }
     </style>
 </head>
 <body>
+
+    <!-- Header -->
+    <header>Animation 2: NF1</header>
 
     <!-- Text at the top of the page -->
     <div class="top-text">
