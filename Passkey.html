@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Password Page</title>
+    <title>Password Information</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -17,29 +18,51 @@
             text-align: center;
         }
 
-        .password-container {
+        .content {
             padding: 20px;
-            border: 2px solid #4CAF50;
+            background-color: rgba(0, 0, 0, 0.5);
             border-radius: 10px;
-            background-color: rgba(0, 0, 0, 0.5); /* Translucent background */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 500px;
         }
 
-        .password-container h1 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        .password-container p {
+        .password {
             font-size: 20px;
             font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .message {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
-    <div class="password-container">
-        <h1>TPlease return to the survey and key in the password to complete the post-test survey.</h1>
-        <p>Password: 1685</p>
+
+    <div class="content">
+        <div class="message">Please return to the survey and key in the password to complete the post-test survey.</div>
+        <div class="password">Password: 1685</div>
+        
+        <!-- Button that links to the next page -->
+        <button class="button" onclick="window.open('nextpage.html', '_blank');">Go to Next Page</button>
     </div>
+
 </body>
 </html>
