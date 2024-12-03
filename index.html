@@ -39,19 +39,29 @@
 <body>
     <!-- Embedded Vimeo Video -->
     <iframe 
+        id="vimeo-player" 
         src="https://player.vimeo.com/video/777212143" 
         allow="autoplay; fullscreen; picture-in-picture" 
         allowfullscreen>
     </iframe>
     
-    <!-- Button at the Bottom -->
-    <button id="action-button" onclick="redirectToPage()">Proceed</button>
+    <!-- Button to Play Video -->
+    <button id="play-button">Play Video</button>
 
+    <script src="https://player.vimeo.com/api/player.js"></script>
     <script>
-        // JavaScript for Button Action
-        function redirectToPage() {
-            window.location.href = "https://www.youtube.com/watch?v=68gU9V2xWRg&ab_channel=CodeCommerce"; // Replace with your desired URL
-        }
+        // Select the iframe and initialize Vimeo Player
+        const iframe = document.getElementById('vimeo-player');
+        const player = new Vimeo.Player(iframe);
+
+        // Add event listener to the button
+        document.getElementById('play-button').addEventListener('click', () => {
+            player.play().then(() => {
+                console.log('Video is playing');
+            }).catch((error) => {
+                console.error('Error playing the video:', error);
+            });
+        });
     </script>
 </body>
 </html>
