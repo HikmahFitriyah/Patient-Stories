@@ -1,6 +1,62 @@
 <script src="https://player.vimeo.com/api/player.js"></script>
 <!DOCTYPE html>
+
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f9f9f9;
+        }
+        iframe {
+            border: none;
+            width: 640px;
+            height: 360px;
+        }
+
+        /* Custom CSS to hide the timeline (progress bar) */
+        .vimeo-player .controls .progress-bar {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <iframe 
+            id="vimeo-player" 
+            src="https://player.vimeo.com/video/YOUR_VIDEO_ID?api=1&player_id=vimeo-player" 
+            allow="autoplay; fullscreen; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script>
+        // Initialize the player
+        const iframe = document.querySelector('#vimeo-player');
+        const player = new Vimeo.Player(iframe);
+
+        // Prevent seeking
+        player.on('seeked', (event) => {
+            player.setCurrentTime(event.lastTime);
+        });
+
+        // Log when the video is played
+        player.on('play', () => {
+            console.log("Video is playing");
+        });
+    </script>
+</body>
+
+<! -- -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
