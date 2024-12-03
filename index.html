@@ -13,22 +13,23 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #f4f4f9;
+            background-color: #333333; /* Dark grey background */
+            color: white; /* White text for contrast */
         }
         iframe {
             border: none;
-            width: 640px;
-            height: 360px;
+            width: 960px; /* Increased video width */
+            height: 540px; /* Increased video height */
             margin-bottom: 20px;
         }
         .button-container {
             display: flex;
-            gap: 20px; /* Space between the buttons */
+            gap: 20px; /* Space between buttons */
         }
         .button {
             padding: 10px 20px;
             font-size: 16px;
-            background-color: #4CAF50;
+            background-color: #4CAF50; /* Green by default */
             color: white;
             border: none;
             border-radius: 5px;
@@ -55,7 +56,7 @@
     <!-- Button Container -->
     <div class="button-container">
         <button class="button" id="play-button" onclick="playVideo()">Play Video</button>
-        <button class="button" id="delayed-button" onclick="window.location.href='https://stackoverflow.com/questions/51548291/can-i-view-changes-to-a-github-hosted-page-before-committing-to-master';">Proceed</button>
+        <button class="button" id="delayed-button" onclick="window.location.href='https://www.example.com';">Proceed</button>
     </div>
 
     <script src="https://player.vimeo.com/api/player.js"></script>
@@ -69,6 +70,11 @@
             player.play().catch((error) => {
                 console.error('Error playing the video:', error);
             });
+
+            // Change Play Button color to grey after click
+            const playButton = document.getElementById('play-button');
+            playButton.style.backgroundColor = '#808080'; // Grey color after click
+            playButton.disabled = true; // Optionally disable the button after it's clicked
 
             // Show Delayed "Proceed" Button After 1 Minute 20 Seconds (80,000 milliseconds)
             const delayedButton = document.getElementById('delayed-button');
