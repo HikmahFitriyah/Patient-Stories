@@ -162,11 +162,11 @@
             playButton.style.backgroundColor = '#808080'; // Grey color after click
             playButton.disabled = true; // Disable the button after it's clicked
 
-            // Show Delayed "Proceed" Button After 1 Minute 20 Seconds (80,000 milliseconds)
+            // Show Delayed "Proceed" Button After 5 Minute 20 Seconds (320,000 milliseconds)
             const delayedButton = document.getElementById('delayed-button');
             setTimeout(() => {
                 delayedButton.style.display = 'inline-block';
-            }, 80000); // 1 minute 20 seconds
+            }, 320,000); // 5 minute 20 seconds
 
             // Reset the Play button once the video ends, to allow replay
             player.on('ended', function() {
