@@ -19,6 +19,13 @@
             text-align: center;
         }
 
+        /* Header */
+        header {
+            font-size: 3vw; /* Responsive header font size */
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
         /* Text at the top */
         .top-text {
             font-size: 2.5vw; /* Font size adjusts relative to viewport width */
@@ -27,10 +34,11 @@
             padding-top: 30px;
             padding-left: 40px;
             padding-right: 40px;
-            background-color: rgba(0, 0, 0, 0.5); /* Adds a translucent background */
-            border-radius: 5px; /* Gives rounded corners */
+            background-color: #101111; /* Match page background */
+            border-radius: 5px; /* Optional: Gives rounded corners */
             line-height: 1.5; /* Improves readability */
             max-width: 80%; /* Limits the width of the text box */
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); /* Subtle glow for better readability */
         }
 
         /* Wrapper for Responsive Video */
@@ -77,6 +85,10 @@
 
         /* Media Query for smaller screens */
         @media (max-width: 600px) {
+            header {
+                font-size: 5vw; /* Larger font size for smaller screens */
+            }
+
             .top-text {
                 font-size: 4vw; /* Larger font size for smaller screens */
             }
@@ -88,6 +100,9 @@
     </style>
 </head>
 <body>
+
+    <!-- Header -->
+    <header>Animation 1: FAP</header>
 
     <!-- Text at the top of the page -->
     <div class="top-text">
