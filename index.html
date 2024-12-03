@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delayed Button</title>
+    <title>Video with Delayed Button</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -21,7 +21,7 @@
             height: 360px;
             margin-bottom: 20px;
         }
-        button {
+        .button {
             padding: 10px 20px;
             font-size: 16px;
             background-color: #4CAF50;
@@ -30,12 +30,13 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
-            display: none; /* Hidden initially */
-            position: absolute;
-            bottom: 20px;
+            margin: 10px;
         }
-        button:hover {
+        .button:hover {
             background-color: #45a049;
+        }
+        #delayed-button {
+            display: none; /* Hidden initially */
         }
     </style>
 </head>
@@ -48,11 +49,9 @@
         allowfullscreen>
     </iframe>
     
-    <!-- Button to Play Video -->
-    <button id="play-button" onclick="playVideo()">Play Video</button>
-    
-    <!-- Delayed Button -->
-    <button id="delayed-button">Proceed</button>
+    <!-- Buttons -->
+    <button class="button" id="play-button" onclick="playVideo()">Play Video</button>
+    <button class="button" id="delayed-button">Proceed</button>
 
     <script src="https://player.vimeo.com/api/player.js"></script>
     <script>
@@ -67,11 +66,11 @@
             });
         }
 
-        // Show Delayed Button After 1 minute 20 seconds (80,000 milliseconds)
+        // Show Delayed "Proceed" Button After 1 Minute 20 Seconds (80,000 milliseconds)
         const delayedButton = document.getElementById('delayed-button');
         setTimeout(() => {
-            delayedButton.style.display = 'block';
-        }, 80000); // 1 minute 20 seconds (80,000 milliseconds)
+            delayedButton.style.display = 'inline-block'; // Make the button visible
+        }, 80000); // 1 minute 20 seconds
     </script>
 </body>
 </html>
