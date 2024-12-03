@@ -1,15 +1,14 @@
-<script src="https://player.vimeo.com/api/player.js"></script>
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Player</title>
+    <title>Watch Video</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -17,98 +16,68 @@
             background-color: #f9f9f9;
         }
         iframe {
-            border: none;
             width: 640px;
             height: 360px;
+            border: none;
+            margin-bottom: 20px;
         }
-
-        /* Custom CSS to hide the timeline (progress bar) */
-        .vimeo-player .controls .progress-bar {
-            display: none !important;
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: gray;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: not-allowed;
+            transition: background-color 0.3s;
+        }
+        button.enabled {
+            background-color: #4CAF50;
+            cursor: pointer;
+        }
+        p {
+            font-size: 16px;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
-    <div>
-        <iframe 
-            id="vimeo-player" 
-            src="https://player.vimeo.com/video/YOUR_VIDEO_ID?api=1&player_id=vimeo-player" 
-            allow="autoplay; fullscreen; picture-in-picture" 
-            allowfullscreen>
-        </iframe>
-    </div>
+    <h1>Watch the Video</h1>
+    <iframe 
+        id="vimeo-player" 
+        src="https://player.vimeo.com/video/YOUR_VIDEO_ID?autoplay=1&muted=1" 
+        allow="autoplay; fullscreen; picture-in-picture" 
+        allowfullscreen>
+    </iframe>
+    <p>After 5 minutes, you can proceed to the next page.</p>
+    <button id="proceed-button" disabled>Go to Next Page</button>
+    <p id="timer"></p>
 
-    <script src="https://player.vimeo.com/api/player.js"></script>
     <script>
-        // Initialize the player
-        const iframe = document.querySelector('#vimeo-player');
-        const player = new Vimeo.Player(iframe);
+        const button = document.getElementById("proceed-button");
+        const timerDisplay = document.getElementById("timer");
+        const delay = 5 * 60; // 5 minutes in seconds
 
-        // Prevent seeking
-        player.on('seeked', (event) => {
-            player.setCurrentTime(event.lastTime);
-        });
+        let timeLeft = delay;
 
-        // Log when the video is played
-        player.on('play', () => {
-            console.log("Video is playing");
-        });
-    </script>
-</body>
+        // Update timer every second
+        const countdown = setInterval(() => {
+            if (timeLeft > 0) {
+                timeLeft--;
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                timerDisplay.textContent = `Time remaining: ${minutes}m ${seconds}s`;
+            } else {
+                clearInterval(countdown);
+                timerDisplay.textContent = "You can now proceed!";
+                button.disabled = false;
+                button.classList.add("enabled");
+            }
+        }, 1000);
 
-<! -- -->
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Player</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f9f9f9;
-        }
-        iframe {
-            border: none;
-            width: 640px;
-            height: 360px;
-        }
-    </style>
-</head>
-<body>
-    <div>
-        <iframe 
-            id="vimeo-player" 
-            src="https://player.vimeo.com/video/777212143?api=1&player_id=vimeo-player&controls=0"
-            allow="fullscreen" 
-            allowfullscreen>
-        </iframe>
-    </div>
-
-    <script src="https://player.vimeo.com/api/player.js"></script>
-    <script>
-        // Initialize the player
-        const iframe = document.querySelector('#vimeo-player');
-        const player = new Vimeo.Player(iframe);
-
-        // Prevent skipping
-        player.on('play', () => {
-            player.on('timeupdate', (event) => {
-                const currentTime = event.seconds;
-                const allowedTime = event.duration * 0.99; // Allow only up to 99% of the video duration
-
-                if (currentTime > allowedTime) {
-                    player.setCurrentTime(allowedTime);
-                }
-            });
-        });
-
-        // Disable seeking
-        player.on('seeked', (event) => {
-            player.setCurrentTime(event.lastTime);
+        // Redirect to another page when button is clicked
+        button.addEventListener("click", () => {
+            window.location.href = "https://www.example.com"; // Replace with your desired URL
         });
     </script>
 </body>
